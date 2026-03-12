@@ -1,20 +1,47 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Market Checkpoint
 
-# Run and deploy your AI Studio app
+A professional, standalone trading journal and market calendar application. 
 
-This contains everything you need to run your app locally.
+This application is built to run entirely locally on your machine. It uses a local SQLite database to store your trades, ensuring your financial data remains 100% private and never leaves your computer.
 
-View your app in AI Studio: https://ai.studio/apps/e552b253-e4e5-48de-a366-8bd4d3821313
+## Features
 
-## Run Locally
+- **Trading Journal:** Log your trades, entry/exit prices, PnL, position sizing, and emotional state.
+- **Interactive Trade Calendar:** Visualize your trades on a calendar alongside high-impact macroeconomic news.
+- **Global Market Calendar:** Full integration with the TradingView Economic Calendar for historical and future macro events.
+- **Advanced Charting:** Integrated TradingView Advanced Charts for technical analysis.
+- **Playbooks:** Document your trading strategies and setups.
+- **Dashboard:** High-level overview of your trading performance.
 
-**Prerequisites:**  Node.js
+## Tech Stack
 
+- **Frontend:** React 18, Vite, Tailwind CSS, Lucide Icons
+- **Backend:** Node.js, Express
+- **Database:** SQLite (Local file-based database `trades.db`)
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## How to Run Locally
+
+You do **not** need any cloud services, AI APIs, or external databases to run this application.
+
+### Prerequisites
+- [Node.js](https://nodejs.org/) (v18 or higher recommended)
+
+### Installation & Setup
+
+1. **Install dependencies:**
+   Open your terminal in the project folder and run:
+   ```bash
+   npm install
+   ```
+
+2. **Start the application:**
+   Run the development server:
+   ```bash
+   npm run dev
+   ```
+
+3. **Open in Browser:**
+   The terminal will show a local URL (usually `http://localhost:3000`). Open this in your web browser.
+
+## Data Privacy
+All your trades and journal entries are saved to a local file named `trades.db` inside the project folder. No data is sent to any external servers.
