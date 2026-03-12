@@ -1,0 +1,132 @@
+@import "tailwindcss";
+
+@theme {
+  --color-tv-dark: #000000;
+  --color-tv-card: rgba(0, 0, 0, 0.85);
+  --color-tv-card-solid: #0A0A0A;
+  --color-tv-border: rgba(255, 255, 255, 0.1);
+  --color-tv-border-solid: #1A1A1A;
+  --color-tv-text: #FFFFFF;
+  --color-tv-text-muted: #888888;
+  --color-tv-accent: #FF00FF;
+  --color-tv-green: #39FF14;
+  --color-tv-red: #FF003C;
+  --color-neon-pink: #FF00FF;
+  --color-neon-blue: #0088FF;
+  --color-neon-cyan: #00FFD1;
+  --color-neon-purple: #9D00FF;
+}
+
+body {
+  background-color: var(--color-tv-dark);
+  color: var(--color-tv-text);
+  background-image: 
+    radial-gradient(circle at 15% 50%, rgba(255, 0, 255, 0.03), transparent 25%),
+    radial-gradient(circle at 85% 30%, rgba(157, 0, 255, 0.03), transparent 25%),
+    linear-gradient(to bottom, rgba(10, 10, 10, 1) 0%, rgba(0, 0, 0, 1) 100%),
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+  background-position: center;
+  background-attachment: fixed;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* Custom Scrollbar for a modern look */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-tv-border-solid);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-tv-text-muted);
+}
+
+/* Neon Glowing Card Wrapper (Raupe) */
+.neon-wrapper {
+  position: relative;
+  border-radius: 1rem;
+  z-index: 1;
+  overflow: hidden;
+  background: var(--color-tv-card-solid);
+  animation: breathe-gloom 4s ease-in-out infinite alternate;
+}
+
+@keyframes breathe-gloom {
+  0% { box-shadow: 0 0 10px rgba(157, 0, 255, 0.1), 0 0 20px rgba(0, 136, 255, 0.05); }
+  100% { box-shadow: 0 0 20px rgba(0, 255, 209, 0.15), 0 0 40px rgba(255, 0, 255, 0.1); }
+}
+
+.neon-wrapper::before {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  width: 300%;
+  height: 300%;
+  background: conic-gradient(
+    transparent 0deg, 
+    transparent 90deg, 
+    var(--color-neon-pink) 180deg, 
+    var(--color-neon-purple) 200deg, 
+    var(--color-neon-blue) 220deg, 
+    var(--color-neon-cyan) 240deg,
+    transparent 290deg
+  );
+  animation: rotate-caterpillar 4s linear infinite;
+  z-index: -2;
+}
+
+.neon-wrapper::after {
+  content: "";
+  position: absolute;
+  inset: 1.3px;
+  border-radius: calc(1rem - 1.3px);
+  background: var(--color-tv-card-solid);
+  z-index: -1;
+}
+
+@keyframes rotate-caterpillar {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Pulsating Flare Effect */
+.flare {
+  animation: pulse-flare 3s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-flare {
+  0% { text-shadow: 0 0 10px var(--color-neon-blue), 0 0 20px var(--color-neon-blue); }
+  100% { text-shadow: 0 0 20px var(--color-neon-cyan), 0 0 40px var(--color-neon-cyan); }
+}
+
+/* React Split Gutter Styles */
+.gutter {
+  background-color: var(--color-tv-border-solid);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  transition: background-color 0.2s ease;
+  z-index: 10;
+}
+
+.gutter:hover {
+  background-color: var(--color-neon-blue);
+  box-shadow: 0 0 10px var(--color-neon-blue);
+}
+
+.gutter.gutter-horizontal {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bMfxAGAgYYmwGrIIiDjrELjpo5aiZeMwF+yNnOs5KSvgAAAABJRU5ErkJggg==');
+  cursor: col-resize;
+}
+
+.gutter.gutter-vertical {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAFAQMAAABo7865AAAABlBMVEVHcEzMzMzyCB2iAAAAAXRSTlMAQObYZgAAABBJREFUeF5jOAMEEAIEEFBgAAXwAQE2XzBPAAAAAElFTkSuQmCC');
+  cursor: row-resize;
+}
